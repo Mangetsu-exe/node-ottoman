@@ -28,7 +28,7 @@ declare namespace OttomanJS {
 
   type ValidatorFunction = (value: any) => void
   interface SchemaField {
-    type: 'string' | 'number' | 'integer' | 'boolean' | 'Date' | 'Mixed' | ModelReference,
+    type: 'string' | 'number' | 'integer' | 'boolean' | 'Date' | 'mixed' | ModelReference,
     auto: 'uuid',
     readonly: boolean,
     validator: ValidatorFunction,
@@ -41,6 +41,20 @@ declare namespace OttomanJS {
 
   interface Schema {
     validate<T> (modelInstance: ModelInstance<T>, callback: ValidationCallback<T>): void
+  }
+
+  interface ModelOptions {
+    index?: IndexDefinition
+    query?: QueriesDefinition
+  }
+
+  interface Queries {
+    of: string
+    by: string
+  }
+
+  interface QueriesDefinition {
+    [key: string]: Queries
   }
 
   interface Index {
