@@ -28,7 +28,7 @@ declare namespace OttomanJS {
 
   type ValidatorFunction = (value: any) => void
   interface SchemaField {
-    type: 'string' | 'number' | 'integer' | 'boolean' | 'Date' | 'mixed' | ModelReference,
+    type: 'string' | 'number' | 'integer' | 'boolean' | 'Date' | 'Mixed' | ModelReference,
     auto: 'uuid',
     readonly: boolean,
     validator: ValidatorFunction,
@@ -45,16 +45,16 @@ declare namespace OttomanJS {
 
   interface ModelOptions {
     index?: IndexDefinition
-    query?: QueriesDefinition
+    query?: QueryDefinition
   }
 
-  interface Queries {
+  interface Query {
     of: string
     by: string
   }
 
-  interface QueriesDefinition {
-    [key: string]: Queries
+  interface QueryDefinition {
+    [key: string]: Query
   }
 
   interface Index {
@@ -99,7 +99,7 @@ declare namespace OttomanJS {
 
     constructor (options: OttomanOptions)
 
-    model (key: string, schema: SchemaDefinition, index: IndexDefinition): ModelInstanceCtor
+    model (key: string, schema: SchemaDefinition, options: ModelOptions): ModelInstanceCtor
   }
 }
 
